@@ -4,7 +4,7 @@ import MoreOptionsIcon from "../assets/MoreOptionsIcon.png";
 import ExpandIcon from "../assets/ExpandIcon.png";
 import CompressIcon from "../assets/CompressIcon.png";
 import { TASK_API_END_POINT } from '../utils/constant'
-import '../Components/Styles/Task.css';
+import '../components/Styles/Task.css';
 import DeleteTask from './Popup/DeleteTask';
 import UpdateTask from './Popup/UpdateTask';
 

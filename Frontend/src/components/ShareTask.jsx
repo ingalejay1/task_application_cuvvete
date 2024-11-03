@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import '../Components/Styles/ShareTask.css';
+import '../components/Styles/ShareTask.css';
 import icon from '../assets/ProManageIcon.png';
 import { TASK_API_END_POINT } from '../utils/constant';
 
