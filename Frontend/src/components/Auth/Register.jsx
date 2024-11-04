@@ -106,7 +106,7 @@ const Register = ({ setShowRegister }) => {
             </form>
             <p className='noAccountPara'>Have no account yet?</p>
             <button onClick={() => setShowRegister(false)}>Log in</button>
-            <ToastContainer position="top-right" />
+            <ToastContainer />
         </div>
     )
 }

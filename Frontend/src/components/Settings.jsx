@@ -9,7 +9,7 @@ import './Styles/Settings.css';
 import { toast } from 'react-toastify';
 import { USER_API_END_POINT } from '../utils/constant';
 
-const Settings = ({ user, setUser }) => {
+const Settings = ({ setUser }) => {
     const [isPassword1Visible, setIsPassword1Visible] = useState(false);
     const [isPassword2Visible, setIsPassword2Visible] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
@@ -19,6 +19,7 @@ const Settings = ({ user, setUser }) => {
         oldPassword: "",
         newPassword: "",
     });
+    const navigate = useNavigate();
 
     const changeEventHandler = (e) => {
         setInput({ ...input, [e.target.name]: e.target.value });
@@ -27,16 +28,19 @@ const Settings = ({ user, setUser }) => {
     const updateHandler = async (e) => {
         e.preventDefault();
         try {
+            const token = localStorage.getItem("token");
             const res = await axios.post(`${USER_API_END_POINT}/profile/update`, input, {
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
                 },
                 withCredentials: true
             });
+
             if (res.data.success) {
-                setUser(res.data.user);
                 toast.success(res.data.message);
                 console.log("Profile Updated Successfully.");
+                logoutUser(setUser, navigate);
             }
         } catch (error) {
             console.log(error);

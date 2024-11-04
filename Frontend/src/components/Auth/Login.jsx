@@ -28,23 +28,21 @@ const Login = ({ setShowRegister, setUser }) => {
         e.preventDefault();
         try {
             const res = await axios.post(`${USER_API_END_POINT}/login`, input, {
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                withCredentials: true,
+                headers: { "Content-Type": "application/json" },
             });
+    
             if (res.data.success) {
                 setUser(res.data.user);
-                localStorage.setItem('user', JSON.stringify(res.data.user));
+                localStorage.setItem("user", JSON.stringify(res.data.user));
+                localStorage.setItem("token", res.data.token);
                 navigate("/");
-                console.log("Login Successful.");
                 toast.success(res.data.message);
             }
         } catch (error) {
-            console.log(error);
-            setErrorMessage(error.response.data.message);
+            console.error(error);
+            setErrorMessage(error.response?.data?.message);
         }
-    }
+    };       
 
     return (
         <div className='register'>
@@ -82,7 +80,7 @@ const Login = ({ setShowRegister, setUser }) => {
             </form>
             <p className='noAccountPara'>Have no account yet?</p>
             <button onClick={() => setShowRegister(true)}>Register</button>
-            <ToastContainer position="top-right" />
+            <ToastContainer />
         </div>
     )
 }

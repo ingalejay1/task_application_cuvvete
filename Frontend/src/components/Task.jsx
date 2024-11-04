@@ -26,7 +26,17 @@ const Task = ({ task, openLinkCopiedToast, refreshTasks, isExpanded, toggleCheck
         setChecklistItems(updatedChecklistItems);
 
         try {
-            await axios.put(`${TASK_API_END_POINT}/${task._id}/checklist/toggle`, { index }, { withCredentials: true });
+            const token = localStorage.getItem("token");
+            await axios.put(
+                `${TASK_API_END_POINT}/${task._id}/checklist/toggle`,
+                { index },
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                    withCredentials: true,
+                }
+            );
             refreshTasks();
         } catch (error) {
             console.error("Failed to update checklist item:", error);
@@ -35,7 +45,11 @@ const Task = ({ task, openLinkCopiedToast, refreshTasks, isExpanded, toggleCheck
 
     const deleteTaskHandler = async () => {
         try {
-            await axios.delete(`${TASK_API_END_POINT}/${task._id}`, { withCredentials: true });
+            const token = localStorage.getItem("token");
+            await axios.delete(`${TASK_API_END_POINT}/${task._id}`, {
+                headers: { Authorization: `Bearer ${token}` },
+                withCredentials: true,
+            });
             refreshTasks(); 
         } catch (error) {
             console.error("Error deleting task:", error);
@@ -60,7 +74,15 @@ const Task = ({ task, openLinkCopiedToast, refreshTasks, isExpanded, toggleCheck
     const handleStatusChange = async (newStatus) => {
         try {
             setIsUpdating(true);
-            const response = await axios.put(`${TASK_API_END_POINT}/${task._id}/status`, { status: newStatus }, { withCredentials: true });
+            const token = localStorage.getItem("token");
+            const response = await axios.put(
+                `${TASK_API_END_POINT}/${task._id}/status`,
+                { status: newStatus },
+                {
+                    headers: { Authorization: `Bearer ${token}` },
+                    withCredentials: true,
+                }
+            );
             if (response.data.success) {
                 console.log("Status Changed.");
                 refreshTasks();
@@ -156,8 +178,8 @@ const Task = ({ task, openLinkCopiedToast, refreshTasks, isExpanded, toggleCheck
                     ))}
                 </div>
             </div>
-            {showDeleteTask && <DeleteTask setShowDeleteTask={setShowDeleteTask} deleteTaskHandler={deleteTaskHandler} />}
-            {showUpdateTask && <UpdateTask setShowUpdateTask={setShowUpdateTask} task={task} refreshTasks={refreshTasks} />}
+            {showDeleteTask && <DeleteTaskPopup setShowDeleteTask={setShowDeleteTask} deleteTaskHandler={deleteTaskHandler} />}
+            {showUpdateTask && <UpdateTaskPopup setShowUpdateTask={setShowUpdateTask} task={task} refreshTasks={refreshTasks} />}
         </div>
     );
 };
