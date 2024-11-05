@@ -59,7 +59,7 @@ const Task = ({ task, openLinkCopiedToast, refreshTasks, isExpanded, toggleCheck
     };
 
     const handleShare = () => {
-        const shareableLink = `${window.location.origin}/sharedtask/${task._id}`;
+        const shareableLink = `${window.location.origin}/#/sharedtask/${task._id}`;
         navigator.clipboard
             .writeText(shareableLink)
             .then(() => {
