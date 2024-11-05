@@ -1,4 +1,5 @@
-import React, { useState, useNavigate } from "react";
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import OpenEyeIcon from "../assets/OpenEyeIcon.png";
 import ClosedEyeIcon from "../assets/ClosedEyeIcon.png";
 import LoginNameIcon from "../assets/LoginNameIcon.png";
