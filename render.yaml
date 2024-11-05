@@ -9,3 +9,12 @@ services:
         source: /*
         destination: /index.html
 
+  - type: web
+    name: backend
+    env: node
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm run dev" 
+    envVars:
+      - key: NODE_ENV
+        value: production
