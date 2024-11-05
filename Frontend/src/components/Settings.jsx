@@ -9,6 +9,7 @@ import axios from "axios";
 import "./Styles/Settings.css";
 import { toast } from "react-toastify";
 import { USER_API_END_POINT } from "../utils/constant";
+import { logoutUser } from "../logout";
 
 const Settings = ({ setUser }) => {
   const [isPassword1Visible, setIsPassword1Visible] = useState(false);
