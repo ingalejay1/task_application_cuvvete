@@ -178,8 +178,8 @@ const Task = ({ task, openLinkCopiedToast, refreshTasks, isExpanded, toggleCheck
                     ))}
                 </div>
             </div>
-            {showDeleteTask && <DeleteTaskPopup setShowDeleteTask={setShowDeleteTask} deleteTaskHandler={deleteTaskHandler} />}
-            {showUpdateTask && <UpdateTaskPopup setShowUpdateTask={setShowUpdateTask} task={task} refreshTasks={refreshTasks} />}
+            {showDeleteTask && <DeleteTask setShowDeleteTask={setShowDeleteTask} deleteTaskHandler={deleteTaskHandler} />}
+            {showUpdateTask && <UpdateTask setShowUpdateTask={setShowUpdateTask} task={task} refreshTasks={refreshTasks} />}
         </div>
     );
 };
