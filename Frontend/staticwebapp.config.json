@@ -1,0 +1,26 @@
+{
+    "routes": [
+      {
+        "src": "/.*",
+        "dest": "/index.html",
+        "status": 200
+      }
+    ],
+    "redirects": [
+      {
+        "src": "/old-path",
+        "dest": "/new-path",
+        "status": 301
+      }
+    ],
+    "headers": [
+      {
+        "source": "/(.*)",
+        "headers": [
+          { "key": "Cache-Control", "value": "max-age=0, no-cache, no-store, must-revalidate" },
+          { "key": "X-Content-Type-Options", "value": "nosniff" }
+        ]
+      }
+    ],
+    "error_page":"/404.html"
+  }
