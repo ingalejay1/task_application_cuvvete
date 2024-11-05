@@ -1,21 +1,10 @@
 services:
   - type: web
-    name: frontend
+    name: your-app-name
     env: static
-    buildCommand: "npm run build"
-    staticPublishPath: dist
+    buildCommand: npm run build
+    staticPublishPath: /build
     routes:
       - type: rewrite
-        source: /*
-        destination: /index.html
-
-  - type: web
-    name: backend
-    env: node
-    plan: free
-    buildCommand: "npm install"
-    startCommand: "npm run dev"  # Adjust according to your server start command
-    envVars:
-      - key: NODE_ENV
-        value: production
-
+        source: "/*"
+        destination: "/index.html"
