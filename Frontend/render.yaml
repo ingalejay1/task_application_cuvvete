@@ -1,10 +1,11 @@
 services:
   - type: web
-    name: your-app-name
+    name: frontend
     env: static
-    buildCommand: npm run build
-    staticPublishPath: /build
+    buildCommand: "npm run build"
+    staticPublishPath: dist
     routes:
       - type: rewrite
-        source: "/*"
-        destination: "/index.html"
+        source: /*
+        destination: /index.html
+
