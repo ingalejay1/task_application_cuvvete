@@ -82,7 +82,7 @@ const SharedTask = () => {
   return (
     <div className="sharedTaskCon">
       <div className="proManageLogoCon2">
-        <img src={ProManageIcon} alt="ProManage logo" />
+        <img src={icon} alt="ProManage logo" />
         <p>Pro Manage</p>
       </div>
       <div className="sharedTask">
