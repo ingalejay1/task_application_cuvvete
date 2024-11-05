@@ -24,7 +24,6 @@
 
 .addPeoplePopup>p {
     color: #000000;
-    font-family: Noto Sans;
     font-size: 0.95rem;
     font-weight: 600;
     line-height: 1rem;
@@ -53,7 +52,6 @@
 
 .addPeopleInputCon>input::placeholder {
     color: #00000080;
-    font-family: Noto Sans;
     font-size: 0.9rem;
     font-weight: 400;
     line-height: 1rem;
@@ -109,7 +107,6 @@
     border-radius: 50%;
     background-color: #FFEBEB;
     color: #000000;
-    font-family: DM Sans;
     font-size: 0.95rem;
     font-weight: 400;
     line-height: 1rem;
@@ -121,7 +118,6 @@
 
 .addPeopleDropdownItem>div>p {
     color: #20102B;
-    font-family: Inter;
     font-size: 0.85rem;
     font-weight: 500;
     line-height: 0.8rem;
